@@ -84,6 +84,8 @@ public class NpmPackagesBuildWrapper extends BuildWrapper {
                         + pathSeparator
                         + vars.get("PATH");
                 vars.override("PATH", overriddenPaths);
+                
+                vars.override("NPM_CONFIG_PREFIX", NodeJSInstaller._preferredLocation(nodeJSInstallation, build.getBuiltOn()).getRemote());
 
                 return super.launch(starter.envs(Util.mapToEnv(vars)));
             }
